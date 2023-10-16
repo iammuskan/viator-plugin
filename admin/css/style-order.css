@@ -1,0 +1,5 @@
+.panel.woocommerce-order-data .order_data_column:last-child,
+.panel.woocommerce-order-data .order_data_column:last-child h3 .edit_address,
+.panel.woocommerce-order-data .order_data_column:last-child .address{
+	display: none;
+}

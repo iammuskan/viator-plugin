@@ -1,0 +1,47 @@
+.DS_Store
+phpcs.xml
+phpunit.xml
+Thumbs.db
+wp-cli.local.yml
+node_modules/
+*.sql
+*.tar.gz
+*.zip
+
+# ignore everything in the root except the "wp-content" directory.
+!wp-content/
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins", "plugins", "themes" directory
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
+
+# ignore these plugins
+wp-content/plugins/hello.php
+log/
+
+# ignore specific themes
+wp-content/themes/twenty*/
+
+# ignore node dependency directories
+node_modules/
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+log/args.txt
+log/body.txt
+log/book.txt
+log/bookingQuestions.txt
+log/debug-mix.txt
+log/error.txt
+log/hold.txt
+log/lead.txt
+log/paxMix.txt
+log/travelers.txt
+log/error.txt
+log/hold.txt
+src/ajax.php

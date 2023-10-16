@@ -1,0 +1,155 @@
+.options_group-viator input[type="email"],
+.options_group-viator input[type="password"],
+.options_group-viator input[type="text"],
+.options_group-viator .product_custom_field-row input[type="date"],
+.options_group-viator .product_custom_field-row input[type="number"],
+.options_group_fields-bands input[type="number"]{
+	width: 100% !important;
+}
+.options_group-viator .product-field-textarea{
+	width: 95%;
+}
+.options_group-viator .button{
+	margin-left: 13px;
+}
+.options_group-viator .options_group {
+	padding-bottom: 9px;
+}
+.options_group-viator p.form-field{
+	padding-right: 10px !important;
+	margin: 0;
+}
+.options_group_row {
+	display: flex;
+}
+.options_group_col {
+	width: 49%;
+	max-width: 49%;
+	flex-basis: 49%;
+	border-right: 1px solid #eee;
+}
+.options_group_col:last-child{
+	border-right: none;
+}
+.options_group_title {
+	font-size: 14px !important;
+	font-weight: bold;
+	text-align: center;
+}
+.options_group_subtitle{
+	font-size: 13px;
+	font-weight: bold;
+	margin: 0 !important;
+	padding-top: 0 !important;
+}
+.options_group-viator .product_custom_field{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.options_group-viator .options_group-itinerary{
+	padding-bottom: 9px;
+	border-bottom: 1px solid #f9f9f9;
+}
+.product_custom_field-row{
+	margin-bottom: 7px;
+}
+.product_custom_field-row:last-child{
+	margin-bottom: 0;
+}
+.product_custom_field-available{
+	margin-bottom: 25px;
+}
+.product_custom_field-available .form-field{
+	width: calc(100% - 40px);
+	max-width: calc(100% - 40px);
+	flex-basis: calc(100% - 40px);
+	box-sizing: border-box;
+}
+.product_custom_field-available .form-field.form-row-full{
+	width: 99.5%;
+	max-width: 99.5%;
+	flex-basis: 99.5%;
+}
+.product_custom_field-available .field-half{
+	width: 47.8%;
+	max-width: 47.8%;
+	flex-basis: 47.8%;
+}
+.product_custom_field-available .field-available-title{
+	position: absolute;
+	left: 0;
+}
+.product_custom_field-available .field-available-prices{
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+	padding-left: 162px;
+	padding-right: 49px;
+}
+.product_custom_field-available .field-available-prices .form-field{
+    display: flex;
+	flex-wrap: wrap;
+	width: 32%;
+	max-width: 32%;
+	flex-basis: 32%;
+	padding: 0 !important;
+}
+.product_custom_field-available .field-available-prices .form-field label{
+	width: 100%;
+	max-width: 100%;
+	flex-basis: 100%;
+	float: none;
+	margin: 0;
+}
+.product_custom_field-available .field-available-prices .form-field input{
+	width: 100%;
+	max-width: 100%;
+	flex-basis: 100%;
+}
+.product_custom_field-available .field-third{
+	width: 33%;
+	max-width: 33%;
+	flex-basis: 33%;
+}
+.options_group_fields-bands{
+    display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.options_group_fields-bands .product_custom_field{
+	width: 33%;
+	max-width: 33%;
+	flex-basis: 33%;
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+	margin-bottom: 5px;
+}
+.options_group_fields-bands .product_custom_field:nth-child(n+4){
+	border-bottom: none;
+	margin-bottom: 0;
+}
+.options_group_fields-bands .product_custom_field:last-child{
+	border-left: none;
+}
+.options_group-viator p.form-field{
+	flex-grow: 1;
+}
+.options_group-viator .button-cancel{
+	width: 30px;
+	height: 30px;
+	font-size: 22px;
+	line-height: 1;
+	color: crimson;
+	padding-bottom: 8px;
+	margin-left: 0;
+	margin-right: 10px;
+	border-color: crimson;
+}
+.options_group-viator .button-cancel:hover{
+	color: red;
+	border-color: red;
+}

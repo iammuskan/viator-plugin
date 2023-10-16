@@ -1,0 +1,12 @@
+.carbon-theme-options .viator-no-bdt {
+	border-top: none !important;
+}
+.carbon-theme-options .viator-no-bdb {
+	border-bottom: none !important;
+}
+.carbon-theme-options .viator-separator {
+	padding-bottom: 0 !important;
+}
+.carbon-theme-options .viator-separator h3 {
+	margin-bottom: 0 !important;
+}

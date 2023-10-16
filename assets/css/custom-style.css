@@ -1,0 +1,896 @@
+@font-face {
+	font-family: "Montserrat";
+	font-weight: 300;
+	font-style: normal;
+	src: url("../fonts/montserrat/Montserrat-Light.ttf") format("truetype"),
+	url("../fonts/montserrat/Montserrat-Light.woff2") format("woff2"),
+	url("../fonts/montserrat/Montserrat-Light.woff") format("woff");
+}
+@font-face {
+	font-family: "Montserrat";
+	font-weight: normal;
+	font-style: normal;
+	src: url("../fonts/montserrat/Montserrat-Regular.ttf") format("truetype"),
+	url("../fonts/montserrat/Montserrat-Regular.woff2") format("woff2"),
+	url("../fonts/montserrat/Montserrat-Regular.woff") format("woff");
+}
+@font-face {
+	font-family: "Montserrat";
+	font-weight: 500;
+	font-style: normal;
+	src: url("../fonts/montserrat/Montserrat-Medium.ttf") format("truetype"),
+	url("../fonts/montserrat/Montserrat-Medium.woff2") format("woff2"),
+	url("../fonts/montserrat/Montserrat-Medium.woff") format("woff");
+}
+@font-face {
+	font-family: "Montserrat";
+	font-weight: 600;
+	font-style: normal;
+	src: url("../fonts/montserrat/Montserrat-SemiBold.ttf") format("truetype"),
+	url("../fonts/montserrat/Montserrat-SemiBold.woff2") format("woff2"),
+	url("../fonts/montserrat/Montserrat-SemiBold.woff") format("woff");
+}
+@font-face {
+	font-family: "Montserrat";
+	font-weight: bold;
+	font-style: normal;
+	src: url("../fonts/montserrat/Montserrat-Bold.ttf") format("truetype"),
+	url("../fonts/montserrat/Montserrat-Bold.woff2") format("woff2"),
+	url("../fonts/montserrat/Montserrat-Bold.woff") format("woff");
+}
+
+a {
+	color: #0c498a;
+}
+a:focus, a:hover {
+	color: #6ba5e2;
+}
+.woocommerce-info {
+	background-color: #0c498a;
+}
+.entry-header {
+	margin-top: 25px;
+}
+.entry-title {
+	font-weight: 700;
+	color: #0c498a;
+}
+.link_basket_count {
+	position: absolute;
+	right: 3px;
+	bottom: 3px;
+	width: 16px;
+	height: 16px;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #fff;
+	text-align: center;
+	border-radius: 50%;
+	background-color: crimson;
+}
+
+.custom-select {
+	position: relative;
+}
+.custom-select::before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 25px;
+	background-repeat: no-repeat;
+	background-size: 15px 20px;
+	background-position: center left;
+	background-image: url(../img/icons/icon-local.svg);
+}
+.custom-select.error::before {
+	background-image: url(../img/icons/icon-local-error.svg);
+}
+.custom-select.error .select-local {
+	border-bottom-color: crimson;
+}
+.custom-range-slider .tooltip-max .tooltip-inner {
+	padding-right: 20px;
+}
+.select-local {
+	width: 100%;
+	height: 50px;
+	border: 0;
+	border-radius: 0;
+	border-bottom: 1px solid #8b8b8b;
+	padding: 16px 10px 16px 25px;
+}
+.destination-modal-box {
+	display: none;
+}
+.destination-modal-box.active {
+	display: block;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 50px;
+	height: auto;
+	text-align: left;
+	border-radius: 0 0 10px 10px;
+	background-color: #fff;
+	z-index: 9;
+}
+.destination-modal-box.active .list-group {
+	margin: 0;
+	border-radius: 0 0 10px 10px;
+}
+.destination-modal-box.active .list-group li {
+	cursor: pointer;
+}
+.excursion__description .faq__item-schedul .list-group-item {
+	padding: .75rem 0;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+.excursion__description .faq__item-schedul .list-group-item:first-child {
+	padding-top: 0;
+	border-top-color: transparent;
+}
+.excursion__description .faq__item-schedul .list-group-item:last-child {
+	border-bottom-color: transparent;
+}
+.filter__availability .check-btn:nth-child(3) {
+	margin-right: 0;
+}
+.filter__body .form-date-range {
+	width: 100%;
+	flex-basis: 100%;
+	margin-top: 20px;
+}
+.filter__body .form-date-range .air-datepicker {
+	width: 100%;
+}
+.pagination__item.active,
+.pagination__dot {
+	cursor: default;
+}
+.pagination__dot:hover {
+	color: silver;
+	background-color: #fff;
+}
+.excursion__description .faq__item-list {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 300;
+	color: #272727;
+}
+.faq__item-list.faq__details {
+	margin-left: 0;
+	list-style: none;
+}
+.faq__details .faq__detail {
+	padding: 6px 6px;
+	padding-left: 35px;
+	background-position: 0 center;
+	background-repeat: no-repeat;
+}
+.faq__details .faq__detail-pass {
+	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%2300AA6C' d='M9 17.5a.498.498 0 01-.354-.146l-6.5-6.5a.5.5 0 01.707-.707L9 16.293 21.146 4.146a.5.5 0 01.707.707l-12.5 12.5A.498.498 0 019 17.5z'/%3E%3C/svg%3E");
+}
+.faq__details .faq__detail-off {
+	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23bd162c' d='M19.5 20a.498.498 0 01-.354-.146l-15-15a.5.5 0 01.707-.707l15 15A.5.5 0 0119.5 20z'/%3E%3Cpath fill='%23bd162c' d='M4.5 20a.5.5 0 01-.354-.854l15-15a.5.5 0 01.707.707l-15 15A.498.498 0 014.5 20z'/%3E%3C/svg%3E");
+}
+.faq__item-list.faq__cancel-list li {
+	margin-bottom: 10px;
+}
+.faq__item-list.faq__cancel-list li:last-child {
+	margin-bottom: 0;
+}
+.faq__item-supplier {
+	color: #f26d43;
+}
+.faq__item-meet-select {
+	width: 100%;
+	height: 50px;
+	padding: 10px;
+	margin-bottom: 17px;
+	border: 0;
+	border-bottom: 1px solid #8b8b8b;
+	background-color: #fff;
+}
+.reviews-in-cnt .review-in-cnt {
+	position: relative;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+}
+.reviews-in-cnt .review-in-cnt::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	width: 70%;
+	height: 1px;
+	margin: auto;
+	background-color: rgba(204, 204, 204, 0.2);
+}
+.reviews-in-cnt .review-in-cnt:last-child {
+	margin-bottom: 0;
+}
+.excursion__content .excursion__info-wrap {
+	margin-bottom: 15px;
+}
+.excursion__content .excursion__info-item {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 20px;
+}
+.excursion__content .excursion-green {
+	color: #318e51;
+}
+.excursion__content .excursion-grey {
+	color: #8b8b8b;
+}
+
+.activities-item__text {
+	height: 70px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.activities-item__title {
+	height: 40px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.activities-item__body .review {
+	min-height: 18.38px;
+}
+
+.excursion .excursion__image {
+	height: 608px;
+}
+.excursion .excursion__image img {
+	height: 100%;
+	object-fit: cover;
+}
+.aside-date__select-people {
+	padding: 10px 0 30px;
+}
+.aside-date__select-people p,
+.aside-date__select-people p span {
+	font-size: 15px;
+	color: #55575b;
+}
+.aside-date__bands-item {
+	margin-bottom: 10px;
+}
+.aside-date__bands-info {
+	padding-right: 5px;
+}
+.aside-date__bands-info p {
+	font-size: 13px;
+	color: #2a2d32;
+	margin-bottom: 0;
+	text-transform: capitalize;
+}
+.aside-date__bands-info span {
+	font-size: 13px;
+	color: #55575b;
+}
+.aside-date__bands-btn-group {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+.aside-date__bands-btn-group .btn {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	padding: 0;
+}
+.aside-date .aside-date__footer {
+	height: 74px;
+}
+.aside-date__footer .il-btn:hover {
+	background-color: #267cd9;
+}
+
+.air-datepicker-cell {
+	flex-wrap: wrap;
+	font-weight: 500;
+}
+.air-datepicker-cell .aside-datepicker-price {
+	width: 100%;
+	flex-basis: 100%;
+	font-size: 8px;
+	line-height: 1;
+	color: #186b6d;
+	text-align: center;
+}
+.air-datepicker-cell.-disabled-,
+.air-datepicker-cell.-disabled-.-focus-,
+.air-datepicker-cell.-disabled- .aside-datepicker-price {
+	color: #c1c1c1;
+	cursor: default;
+	font-weight: 400;
+	background: none;
+}
+
+
+.air-datepicker-cell.-other-month- .aside-datepicker-price {
+	color: #dedede;
+}
+.aside-date__total {
+	flex-wrap: wrap;
+}
+.aside-date__total span {
+	width: 100%;
+	max-width: 100%;
+	flex-basis: 100%;
+	line-height: 1;
+}
+.aside-date__total-from {
+	font-size: 22px;
+}
+.aside-date__total-price {
+	font-size: 32px;
+}
+.block-news .news-item__text {
+	min-height: 85px;
+}
+#modal-booking .il-modal__content {
+	max-width: 600px;
+	height: 100%;
+	max-height: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 20px;
+	border-radius: 8px;
+}
+#modal-booking .il-modal__content p {
+	font-size: 30px;
+	margin-bottom: 0;
+}
+
+/*.header__box .select2-results__option[aria-selected="true"]{*/
+/*	background-color: rgba(24, 107, 109, 0.2);*/
+/*}*/
+.skeleton-loader {
+	position: relative;
+	overflow: hidden;
+	background-color: #dddbdd;
+}
+.skeleton-loader::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+	transform: rotateZ(360deg);
+	animation: skeleton-loading 2s 5;
+}
+
+.skeleton-init .activities-item {
+	min-height: 500px;
+}
+.skeleton-init .activities-item__image {
+	min-height: 302px;
+}
+.skeleton-init .activities-item__body {
+	min-height: 200px;
+}
+.skeleton-init .activities-item__title {
+	width: 70%;
+	min-height: 20px;
+}
+.skeleton-init .review {
+	width: 60%;
+	min-height: 18px;
+}
+.skeleton-init .activities-item__text {
+	width: 85%;
+	max-height: 68px;
+	background-color: transparent;
+}
+.skeleton-init .excursion__image {
+	height: 608px;
+}
+.skeleton-init .tags__item {
+	width: 85px;
+	height: 30px;
+}
+.skeleton-init .excursion__title {
+	width: 80%;
+	height: 43px;
+}
+.skeleton-init .excursion__language {
+	width: 50%;
+	height: 17px;
+}
+.skeleton-init .excursion__duration {
+	width: 60%;
+	height: 20px;
+}
+.skeleton-init .excursion__info_item,
+.skeleton-init .excursion__cancellation {
+	width: 70%;
+	height: 20px;
+}
+.skeleton-init .aside-images__item {
+	max-width: 390px;
+	height: 253px;
+}
+.skeleton-init .pagination_min {
+	height: 59px;
+}
+.skeleton-init .excursion__description {
+	height: 400px;
+}
+.skeleton-init .aside-date__calendar {
+	width: 100%;
+	height: 328px;
+}
+.faq__item-schedul .skeleton-loader {
+	width: 250px;
+	height: 20px;
+}
+.excursion__slider-main.skeleton-loader {
+	height: 610px;
+}
+.aside-date-loaded.skeleton-init {
+	height: 542px;
+}
+.page-numbers.current {
+	color: #fff;
+	background-color: #0c498a;
+}
+.disable-time label,
+.disable-time label:hover {
+	color: #fff;
+	border-color: #f26d43;
+	background-color: #f26d43;
+	cursor: initial;
+}
+.disable-time {
+	display: none;
+}
+
+@keyframes skeleton-loading {
+	0% {
+		left: -150px;
+	}
+	100% {
+		left: 100%;
+	}
+}
+
+/*  widget WC_Widget_Cart */
+.link_basket .widget.widget_shopping_cart {
+	position: absolute;
+	top: 100%;
+	width: 260px;
+	z-index: 9999999;
+	font-size: .875em;
+	left: -999em;
+	background-color: #f0f0f0;
+}
+.link_basket:hover .widget.widget_shopping_cart,
+.link_basket.focus .widget.widget_shopping_cart {
+	left: 0;
+	transform: translateX(-50%);
+}
+.link_basket .widget_shopping_cart .total {
+	color: #404040;
+}
+.link_basket .widget_shopping_cart .buttons,
+.link_basket .widget_shopping_cart .total {
+	background-color: #f5f5f5;
+}
+.link_basket .widget_shopping_cart a.button {
+	display: none;
+}
+.link_basket .widget a.button.checkout {
+	display: block;
+	padding: .6180469716em 1.41575em;
+	background-color: #0c498a;
+	border-color: #0c498a;
+	color: #fff;
+	transition: all 200ms linear;
+}
+.link_basket .widget a.button.checkout:hover {
+	background-color: #fff;
+	border-color: #fff;
+	text-decoration: none;
+	color: #0c498a;
+}
+.link_basket .widget_shopping_cart .woocommerce-mini-cart__empty-message {
+	color: #404040;
+	margin: 1.41575em;
+}
+.link_basket .widget_shopping_cart_content a {
+	color: #404040;
+	text-decoration: none;
+}
+.link_basket .woocommerce-mini-cart-item {
+	font-weight: normal;
+	/*padding-left: 27px;*/
+}
+.link_basket .widget_shopping_cart .product_list_widget li a.remove {
+	left: -1px;
+}
+.faq__item-price-time {
+	margin-bottom: 5px;
+}
+.btn-cancel-policy {
+	line-height: 1;
+	padding: 0 0 3px;
+	border: none;
+}
+.isnt-bookable {
+	font-size: 18px;
+	font-weight: bold;
+	color: crimson;
+	margin-bottom: 0;
+	padding: 5px 10px;
+	background-color: #fcedf0;
+}
+.departure-separetor {
+	display: block;
+	margin-top: 50px;
+}
+#order_review table tbody tr {
+	border-bottom: none;
+}
+#order_review .cart_item .product-name {
+	width: 70%;
+	padding-bottom: 0;
+}
+#order_review .cart_item.cart_item-extra .product-name {
+	color: #7b7b7b;
+	padding: 0;
+	padding-left: 15px;
+	padding-bottom: 10px;
+}
+
+.flag-icon {
+	display: inline-block;
+	margin-left: 5px;
+	width: 20px;
+	height: 15px;
+	background-repeat: no-repeat;
+	background-size: 20px 15px;
+	background-position: 50%;
+}
+.home .destination__item {
+	height: 140px;
+}
+.header__link-icon:hover {
+	text-decoration: none;
+}
+.header__link-icon.link_country {
+	margin-right: 10px;
+}
+.current_currency {
+	color: #fff;
+	font-size: 17px;
+	line-height: 32px;
+}
+.ilmio_container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	font-family: "Montserrat", sans-serif;
+	color: #fff;
+	max-width: 1024px;
+	padding: 105px 0 0;
+	margin: 0 auto;
+	justify-content: space-between;
+}
+.ilmio_icon {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 0;
+	font-family: "Montserrat", sans-serif;
+	margin: 0;
+	color: #fff;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75);
+}
+.ilmio_icon img {
+	width: 50px;
+	height: 50px;
+	padding: 0 10px 0 0;
+}
+
+@media (max-width: 820px) {
+	input {
+		font-size: 20px;
+		padding: 10px;
+	}
+}
+
+.ilmio_button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	font-family: "Montserrat", sans-serif;
+	top: 9px;
+	right: 11px;
+	background-color: #0d498a;
+	color: #fff;
+	text-align: center;
+	border: none;
+	border-radius: 40px;
+	min-height: 30px;
+	min-width: 120px;
+}
+.ilmio_button a {
+	color: rgb(255, 255, 255);
+	padding: 26px;
+	text-decoration: none;
+}
+.ilmio_content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #fff;
+	width: 85%;
+	min-height: 520px;
+	margin: 0 auto;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.ilmio_top_city {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	padding: 30px 0 30px 0;
+	font-family: "Montserrat", sans-serif;
+	font-size: 30pt;
+	color: #0d498a;
+	font-weight: bold;
+}
+.modal_destinations {
+	display: none;
+}
+.modal_destinations.active {
+	display: block;
+}
+@media (max-width: 500px) {
+	.ilmio_top_city {
+		font-size: 20pt;
+	}
+}
+.ilmio_city_wrap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+.ilmio_city_countent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 0px 20px 0px;
+	width: 20%;
+}
+@media (max-width: 820px) {
+	.ilmio_city_countent {
+		width: 33%;
+	}
+}
+
+.ilmio_city {
+	display: flex;
+	font-family: "Montserrat", sans-serif;
+	font-weight: bold;
+	color: #000;
+}
+.ilmio_city_item {
+	display: flex;
+	font-family: "Montserrat", sans-serif;
+}
+.ilmio_button_top {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Montserrat", sans-serif;
+	background-color: #fff;
+	color: #0d498a;
+	text-align: center;
+	border: 1px solid #0d498a;
+	border-radius: 40px;
+	max-width: 345px;
+	height: 62px;
+	margin: 0 0 30px 0;
+}
+.ilmio_button_top a {
+	color: #0d498a;
+	padding: 26px 50px 26px 50px;
+	text-decoration: none;
+}
+
+.modal_destinations {
+	position: absolute;
+	top: 0;
+	margin: 110px auto;
+	left: 42px;
+	padding-top: 42px;
+}
+
+@media (max-width: 1349px) {
+	.link_basket:hover .widget.widget_shopping_cart {
+		transform: translateX(-76%);
+	}
+}
+@media (max-width: 1199px) {
+	.catalog__filter {
+		position: static;
+	}
+
+	.admin-bar .filter.active {
+		top: 32px;
+	}
+}
+@media (max-width: 991px) {
+	#customer_login .u-column1,
+	#customer_login .u-column2 {
+		width: 100%;
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+	#customer_login .u-column2{
+		margin-top: 40px;
+	}
+	.excursion__aside.active {
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		max-width: 100%;
+		z-index: 999999999;
+		background-color: #fff;
+		pointer-events: all;
+		overflow-y: auto;
+	}
+	.aside-date.active{
+		display: flex;
+		flex-direction: column;
+		min-height: 100%;
+	}
+	.aside-date.active .aside-date__body{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: calc(100vh - 58px);
+	}
+	.aside-active{
+		overflow: hidden;
+	}
+}
+@media (max-width: 767px) {
+	.entry-title {
+		font-size: 62px;
+	}
+
+	.catalog__content-top {
+		flex-direction: inherit;
+	}
+
+	.catalog__content-top-btns {
+		width: 50%;
+	}
+
+	.catalog__sort {
+		width: calc(100% - 8px);
+	}
+
+}
+@media (max-width: 575px) {
+	.main-banner__content {
+		padding: 60px 0 110px;
+	}
+	.ilmio_container {
+		padding: 30px 0 0;
+	}
+	.ilmio_icon {
+		margin: 10px 0;
+	}
+	.ilmio_city_countent {
+		width: 50%;
+	}
+	.header__box-currency,
+	.header__box-lang {
+		display: none;
+		position: absolute;
+		left: calc(50% - 40px);
+		top: 80px;
+	}
+	.header__box-currency {
+		left: calc(50% + 6px);
+	}
+	.header__nav__active .header__box-currency,
+	.header__nav__active .header__box-lang {
+		display: block;
+	}
+	.header__menu {
+		padding-top: 60px;
+	}
+	.entry-title {
+		font-size: 36px;
+		text-align: center;
+	}
+	.link_basket:hover .widget.widget_shopping_cart {
+		transform: translateX(-90%);
+	}
+	.aside-date__select-people > p{
+		text-align: center;
+	}
+	.aside-date__select-people{
+		width: 90%;
+	}
+}
+.faq__item-price.disable {
+	cursor: not-allowed;
+	display: none;
+}
+.faq__item-price:not(.disable) .faq__item-price-label.label-unavailable,
+.faq__item-price.disable .faq__item-price-label {
+	display: none;
+}
+.faq__item-price.disable .faq__item-price-label.label-unavailable {
+	display: inline-block;
+}
+.aside-date__footer .aside-date__total {
+	display: none;
+}
+.aside-date__footer .il-btn {
+	width: 100%;
+}
+h6 {
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 20px;
+}
+.checkout-date-tour {
+	padding-top: 16px;
+	/*border-top: 1px solid #8b8b8b;*/
+}
+.show-password-input {
+	bottom: 0;
+	padding-top: 7px;
+	line-height: 1;
+	margin: auto;
+}
+.woocommerce-form-login__submit {
+	margin-top: 20px;
+}
+button.wp-element-button {
+	color: #fff;
+	padding: 10px 15px;
+	border-color: #333;
+	background-color: #333;
+}
+#customer_login {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-right: 0;
+	margin-bottom: 60px;
+	float: none;
+}
+#customer_login .u-column1,
+#customer_login .u-column2 {
+	width: 40%;
+	flex-basis: 40%;
+	max-width: 40%;
+}
+
+#customer_login .woocommerce-Input {
+	border-width: 1px;
+	border-color: #0c498a;
+}
