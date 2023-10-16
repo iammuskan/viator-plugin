@@ -16,14 +16,20 @@ const {__, _x, _n, _nx} = wp.i18n;
 
     const storedHTML = localStorage.getItem(CACHE_KEY);
     const expirationTime = localStorage.getItem(CACHE_EXPIRATION_KEY);
+const currentPageURLFromStorage = localStorage.getItem('currentPageURL');
 
-    if (storedHTML && expirationTime && Date.now() < parseInt(expirationTime)) {
+    // Get the real page URL
+    const currentPage = window.location.href;
+        const urlsMatch = currentPage === currentPageURLFromStorage;
+
+    if (storedHTML && expirationTime && Date.now() < parseInt(expirationTime) && urlsMatch) {
         const { htmlContent } = JSON.parse(storedHTML);
         const blockPopularRow = document.querySelector('.home .block-popular .row');
         blockPopularRow.innerHTML = htmlContent;
-        console.log('Used cached products');
+        console.log('Url matche & Used cached products');
+        
     } else {
-        console.log('Sending request because cache is not stored!');
+        console.log('URL not matched & Sending request because cache is not stored!');
 	let $dataForSend = {
 			action: 'get_products_search',
 			target: 'home',
@@ -78,6 +84,11 @@ const {__, _x, _n, _nx} = wp.i18n;
                 // Store HTML content and expiration time in localStorage
                 localStorage.setItem(CACHE_KEY, jsonRowHTML);
                 localStorage.setItem(CACHE_EXPIRATION_KEY, Date.now() + EXPIRATION_TIME);
+                //store the url to match the condition if url match then revert the data else it will store the data in to the local storage.
+                const currentPageURL = window.location.href;
+                localStorage.setItem('currentPageURL', currentPageURL);
+
+
        
 		}
 
@@ -223,3 +234,4 @@ const {__, _x, _n, _nx} = wp.i18n;
 
 }());
 //END main-banner
+
