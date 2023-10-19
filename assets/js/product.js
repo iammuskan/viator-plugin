@@ -92,16 +92,16 @@ const insertProduct = ($wrapper, product) => {
 		$sliderBox.insertAdjacentHTML('beforeend', $template($data));
 
 		//init slider
-		jQuery('.excursion__slider-main').slick({
+		jQuery('.excursion__slider .excursion__slider-main').slick({
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			arrows: false,
 			fade: true,
 			autoplay: true,
 			autoplaySpeed: 10000,
-			asNavFor: '.excursion__slider-nav',
+			asNavFor: '.excursion__slider .excursion__slider-nav',
 		});
-		jQuery('.excursion__slider-nav').slick({
+		jQuery('.excursion__slider .excursion__slider-nav').slick({
 			slidesToShow: 2,
 			slidesToScroll: 1,
 			asNavFor: '.excursion__slider-main',
@@ -110,8 +110,8 @@ const insertProduct = ($wrapper, product) => {
 			centerMode: true,
 			vertical: true,
 			centerPadding: '0',
-			appendArrows: '.excursion__slider-arrows',
-			appendDots: '.excursion__slider-arrows',
+			appendArrows: '.excursion__slider .excursion__slider-arrows',
+			appendDots: '.excursion__slider .excursion__slider-arrows',
 			prevArrow: '<button type="button" class="slick-prev"></button>',
 			nextArrow: '<button type="button" class="slick-next"></button>',
 			responsive: [
@@ -1045,28 +1045,9 @@ const insertProduct = ($wrapper, product) => {
 
 const getProduct = async () => {
 const currentPageURL = window.location.href;
-// const storedData = JSON.parse(localStorage.getItem(currentPageURL));
 
-// // ... (previous code)
-
-// if (storedData) {
-//   const containerContent = storedData.content;
-
-//   // Create a new div
-//   const newDiv = document.createElement('div');
-
-//   // Set the innerHTML of the new div to the container content
-//   newDiv.innerHTML = containerContent;
-// newDiv.classList.add('excursion__content');
-//   // Find the element with the class .excursion__wrap
-//   const excursionWrap = document.querySelector('.excursion__wrap');
-
-//   // Append the new div inside the .excursion__wrap element
-//   excursionWrap.prepend(newDiv);
-// }
 	let $contentWrap = $('.container .excursion__wrap ');
 
-// ... (rest of your code)
 
 	let requestOptions = {
 		action: 'get_product',
@@ -1116,7 +1097,6 @@ const currentPageURL = window.location.href;
 
 	let availability = await getAilability(requestOptions.id);
 	  let finalResult = {...filterResponse(response), ...availability};
-// Get the current page URL
 
     return finalResult;
 

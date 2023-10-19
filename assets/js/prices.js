@@ -255,7 +255,7 @@ for (let key in jsonData) {
 }
 
 // Wrap the ul with a div with class 'texthide' and append it to the body
-ulElement.appendTo('body');
+ulElement.appendTo('.child');
 
 
 // Logging the number of times JSON data has been printed
@@ -459,7 +459,7 @@ if (existingPriceDiv) {
 		$('.faq__item-prices').replaceWith($priceElement);
 
 	} else {
-		$('.faq__item.description').after($priceElement);
+		$('.excursion__description .faq__item.description').after($priceElement);
 	}
 
 	$('.faq__item-price').removeClass('d-none');

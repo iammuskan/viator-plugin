@@ -81,9 +81,39 @@ async function wrapProduct(type) {
 		if (product['bookingConfirmationSettings']['confirmationType'] === 'INSTANT') {
 
 			try {
-
+			
 				// insert the data of the product
 				wrapProduct(type);
+const currentDate = new Date().toISOString().slice(0, 10);
+const pageURL = window.location.href;
+
+const cached_title = $('.excursion__title').html();
+const cached_products = $('.excursion__info').html();
+const cached_slider = $('.excursion__slider-main .slick-track').html(); // Added this line
+const cached_slider_nav = $('.excursion__slider-second .slick-track').html(); // Added this line
+
+const description_faqs = $('.excursion__description').html();
+try {
+  let singleproductdata = await axios({
+    method: 'POST',
+    data: new URLSearchParams({
+      action: 'singleproduct_db',
+      date: currentDate,
+      pageUrl: pageURL,
+      title: cached_title,
+      info: cached_products,
+      slider: cached_slider,
+      desc: description_faqs,// Added this line
+    }),
+    url: '/wp-admin/admin-ajax.php',
+  });
+
+  console.log('HTML data sent to the backend:', singleproductdata);
+} catch (error) {
+  console.error('Error sending HTML data:', error);
+}
+
+
 
 			} catch (error) {
 				console.error(error);
@@ -95,24 +125,54 @@ async function wrapProduct(type) {
 		}
 
 		// Get Similar Events
-		let $similarMain = document.querySelector('.block-popular .row');
-		window.addEventListener('scroll', function () {
-			if (scrollVisibleEl($similarMain) && !$similarMain.classList.contains('popular-similar')) {
-				$similarMain.classList.add('popular-similar');
-				let $insertSkeletonCount = 3,
-					$insertSimilarCount = 3;
+	let $similarMain = document.querySelector('.block-popular .row');
+window.addEventListener('scroll', async function () {
+    if (scrollVisibleEl($similarMain) && !$similarMain.classList.contains('popular-similar')) {
+        $similarMain.classList.add('popular-similar');
+        let $insertSkeletonCount = 3,
+            $insertSimilarCount = 3;
 
-				if (window.outerWidth < 992) {
-					$insertSkeletonCount = $insertSimilarCount = 2;
-				}
+        if (window.outerWidth < 992) {
+            $insertSkeletonCount = $insertSimilarCount = 2;
+        }
 
-				insertSkeleton($insertSkeletonCount, $similarMain);
-				let destinations = product.destinations[0]['ref'];
-				insertSimilar($similarMain, destinations, $insertSimilarCount);
-			}
-		});
+        await insertSkeleton($insertSkeletonCount, $similarMain);
+        let destinations = product.destinations[0]['ref'];
+        await insertSimilar($similarMain, destinations, $insertSimilarCount);
+
+        await yourNewAsyncFunction();
+    }
+});
+
+async function yourNewAsyncFunction() {
+    // This function will only execute after insertSimilar is done
+const dataSimilar = $('.popular-similar').html();
+
+             const pageUrl = window.location.href;
+             console.log(pageUrl);// Get current page URL
+            const currentDate=  new Date().toISOString().slice(0, 10);
+
+          try { let storeDataResponse = await axios({
+                    method: 'POST',
+                    data: new URLSearchParams({
+                        action: 'data_for_send',
+                        dataSimilar: dataSimilar,
+                        pageUrl: pageUrl,
+                        date: currentDate,
+                    }),
+                    url: '/wp-admin/admin-ajax.php',
+                });
+
+            } catch (error) {
+                console.error('Error sending HTML data:', error);
+            }
+    
+}
+
 		// Get Similar Events
+		 
 	}
+
 
 	window['asideDateSelectHandler'] = async function (date, formattedDate, datepicker) {//Calendar Handler select
 
@@ -145,6 +205,6 @@ async function wrapProduct(type) {
 			insertIntoCalendar();
 		}, 5);
 	};
-
+ 
 
 }());

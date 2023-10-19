@@ -10,94 +10,101 @@ const {__, _x, _n, _nx} = wp.i18n;
 
 
 (async function () {
-   const CACHE_KEY = 'blockPopularRowHTML';
-    const CACHE_EXPIRATION_KEY = 'cacheExpirationTime';
-    const EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+    let $dataForSend = {
+        action: 'get_products_search',
+        target: 'home',
+    };
+    let $viatorLang = sessionStorage.getItem('viatorLang');
+    let $viatorCurrency = localStorage.getItem('viatorCurrency') ?? viatorParameters?.default_currency;
 
-    const storedHTML = localStorage.getItem(CACHE_KEY);
-    const expirationTime = localStorage.getItem(CACHE_EXPIRATION_KEY);
-const currentPageURLFromStorage = localStorage.getItem('currentPageURL');
+    if (!localStorage.getItem('viatorDest') || Date.now() > localStorage.getItem('viatorDestLastUp')) {
+        $dataForSend['get_destinations'] = true;
+    }
 
-    // Get the real page URL
-    const currentPage = window.location.href;
-        const urlsMatch = currentPage === currentPageURLFromStorage;
+    if (!localStorage.getItem('viatorTags') || Date.now() > localStorage.getItem('viatorTagsLastUp')) {
+        $dataForSend['get_tags'] = true;
+    }
 
-    if (storedHTML && expirationTime && Date.now() < parseInt(expirationTime) && urlsMatch) {
-        const { htmlContent } = JSON.parse(storedHTML);
-        const blockPopularRow = document.querySelector('.home .block-popular .row');
-        blockPopularRow.innerHTML = htmlContent;
-        console.log('Url matche & Used cached products');
-        
-    } else {
-        console.log('URL not matched & Sending request because cache is not stored!');
-	let $dataForSend = {
-			action: 'get_products_search',
-			target: 'home',
-		},
-		$viatorLang = sessionStorage.getItem('viatorLang'),
-		$viatorCurrency = localStorage.getItem('viatorCurrency') ?? viatorParameters?.default_currency;
+    if ($viatorLang) {
+        $dataForSend['language'] = $viatorLang;
+    }
+    if ($viatorCurrency) {
+        $dataForSend['currency'] = $viatorCurrency;
+    }
 
-	if (!localStorage.getItem('viatorDest') || Date.now() > localStorage.getItem('viatorDestLastUp')) {
-		$dataForSend['get_destinations'] = true;
-	}
+    try {
+        let $result = await axios({
+            method: 'POST',
+            data: new URLSearchParams($dataForSend),
+            url: '/wp-admin/admin-ajax.php',
+        });
 
-	if (!localStorage.getItem('viatorTags') || Date.now() > localStorage.getItem('viatorTagsLastUp')) {
-		$dataForSend['get_tags'] = true;
-	}
-
-	if ($viatorLang) {
-		$dataForSend['language'] = $viatorLang;
-	}
-	if ($viatorCurrency) {
-		$dataForSend['currency'] = $viatorCurrency;
-	}
-
-	try {
-		let $result = await axios({
-			method: 'POST',
-			data: new URLSearchParams($dataForSend),
-			url: '/wp-admin/admin-ajax.php',
-		});
+        $result = $result['data'];
+        console.log($result);
 
 
-		$result = $result['data'];
-		console.log($result, `featured_source: ${viatorParameters?.featured_source}` );
-		console.log($dataForSend);
+        if ($result?.data) {
+            if ($result?.dest) {
+                updateStorage($result['dest'], 'Dest');
+            }
+            if ($result?.tags) {
+                updateStorage($result['tags'], 'Tags');
+            }
 
-		if ($result?.data) {
-			if ($result?.dest) {
-				updateStorage($result['dest'], 'Dest');
-			}
-			if ($result?.tags) {
-				updateStorage($result['tags'], 'Tags');
-			}
-			    const blockPopularRow = document.querySelector('.home .block-popular .row');
+            insertCardProducts(
+                document.querySelector('.block-popular .newrowclass'),
+                viatorParameters?.featured_source === 'prod' ? $result?.data : $result?.data?.products,
+            );
+            const gridElements = document.querySelector('.block-popular .row').innerHTML; // Select all grid elements
+             const pageUrl = window.location.href; // Get current page URL
+            const currentDate=  new Date().toISOString().slice(0, 10);
+             console.log(gridElements);
 
+          try { let storeDataResponse = await axios({
+                    method: 'POST',
+                    data: new URLSearchParams({
+                        action: 'store_api_response_data',
+                        htmlData: gridElements,
+                        pageUrl: pageUrl,
+                        date: currentDate,
+                    }),
+                    url: '/wp-admin/admin-ajax.php',
+                });
 
-			insertCardProducts(
-				document.querySelector('.block-popular .row'),
-				viatorParameters?.featured_source === 'prod' ? $result?.data : $result?.data?.products,
-			);
-			 const rowHTML = blockPopularRow.innerHTML;
-                const jsonRowHTML = JSON.stringify({ htmlContent: rowHTML });
+                console.log('HTML data sent to the backend:', storeDataResponse);
+            } catch (error) {
+                console.error('Error sending HTML data:', error);
+            }
+            if (document.querySelectorAll('.rowed').length === 0) {
+  document.querySelector('.newrowclass').style.display='flex';
+} else {
+     document.querySelector('.newrowclass').style.display='none';
 
-                // Store HTML content and expiration time in localStorage
-                localStorage.setItem(CACHE_KEY, jsonRowHTML);
-                localStorage.setItem(CACHE_EXPIRATION_KEY, Date.now() + EXPIRATION_TIME);
-                //store the url to match the condition if url match then revert the data else it will store the data in to the local storage.
-                const currentPageURL = window.location.href;
-                localStorage.setItem('currentPageURL', currentPageURL);
+}
+const prices = document.querySelectorAll('.newrowclass .activities-item__price');
 
+// Create an array to store the innerHTML
+const pricesArray = [];
 
-       
-		}
+// Loop through each element and extract the innerHTML
+prices.forEach(price => {
+  pricesArray.push(price.innerHTML);
+});
 
-	} catch (e) {
-		console.log(e)
-	}
-	
-    }	
-	
+// Log the array to the console
+console.log(pricesArray);
+const targetElements = document.querySelectorAll('.rowed .activities-item__price');
+
+// Loop through target elements and append the innerHTML from pricesArray
+targetElements.forEach((targetElement, index) => {
+  targetElement.innerHTML = pricesArray[index];
+});
+        }
+
+    } catch (e) {
+        console.log(e);
+    }
+
 }());
 
 
@@ -234,4 +241,3 @@ const currentPageURLFromStorage = localStorage.getItem('currentPageURL');
 
 }());
 //END main-banner
-
